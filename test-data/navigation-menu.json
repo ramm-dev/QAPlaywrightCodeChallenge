@@ -1,0 +1,28 @@
+{
+  "menuTests": [
+    {
+      "name": "aboutUs",
+      "urlPath": "/about.htm"
+    },
+    {
+      "name": "services",
+      "urlPath": "/services.htm"
+    },
+    {
+      "name": "products",
+      "urlPath": "/products.htm"
+    },
+    {
+      "name": "locations",
+      "urlPath": "/locations.htm"
+    },
+    {
+      "name": "adminPage",
+      "urlPath": "/admin.htm"
+    },
+    {
+      "name": "contact",
+      "urlPath": "/contact.htm"
+    }
+  ]
+} 

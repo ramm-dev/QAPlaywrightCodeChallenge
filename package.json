@@ -1,0 +1,21 @@
+{
+  "name": "pwcodechallenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.17"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
