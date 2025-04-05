@@ -2,6 +2,7 @@
 const { faker } = require('@faker-js/faker');
 const fs = require('fs');
 const path = require('path');
+const config = require('./config-loader');
 
 /**
  * Fill payee information in the bill pay form
@@ -55,8 +56,9 @@ function getAccountId(index = 0) {
 
 async function captureAccountData(page) {
   // Wait for and capture API response
+  const apiBaseUrl = config.apiBaseUrl || 'https://parabank.parasoft.com/parabank/services_proxy';
   const accountsResponse = await page.waitForResponse(response => 
-    response.url().includes('/parabank/services_proxy/bank/customers') && 
+    response.url().includes(`${apiBaseUrl}/bank/customers`) && 
     response.status() === 200
   );
   

@@ -19,7 +19,6 @@ module.exports = defineConfig({
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
     screenshot: 'only-on-failure'
-    
   },
   retries: 1,
   workers: 1,
@@ -30,10 +29,29 @@ module.exports = defineConfig({
       testMatch: /global-setup\.js/,
     },
     {
-      name: 'tests',
+      name: 'chromium',
       dependencies: ['setup'],
       testMatch: /.*\.spec\.js/,
       use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'auth.json',
+      },
+    },
+    {
+      name: 'firefox',
+      dependencies: ['setup'],
+      testMatch: /.*\.spec\.js/,
+      use: {
+        ...devices['Desktop Firefox'],
+        storageState: 'auth.json',
+      },
+    },
+    {
+      name: 'webkit',
+      dependencies: ['setup'],
+      testMatch: /.*\.spec\.js/,
+      use: {
+        ...devices['Desktop Safari'],
         storageState: 'auth.json',
       },
     },

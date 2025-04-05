@@ -1,10 +1,10 @@
 const BasePage = require('./BasePage');
 const { expect } = require('@playwright/test');
+const config = require('../utils/config-loader');
 
 class NavigationMenu extends BasePage {
   constructor(page) {
     super(page);
-    // Target links only in the header panel
     const headerPanel = page.locator('#headerPanel');
     this.menuItems = {
       home: page.getByRole('link', { name: 'home', exact: true }),
@@ -15,6 +15,7 @@ class NavigationMenu extends BasePage {
       adminPage: headerPanel.getByRole('link', { name: 'Admin Page' }),
       contact: page.getByRole('link', { name: 'contact', exact: true })
     };
+    this.baseUrl = config.baseUrl || 'https://parabank.parasoft.com';
   }
 
   async clickMenuItem(menuName) {

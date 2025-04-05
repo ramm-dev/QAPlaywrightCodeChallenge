@@ -34,14 +34,10 @@ class TransferFundsPage extends BasePage {
   async performTransfer(amount) {
     await this.amountInput.fill(amount.toString());
     
-    // Get the account values
+    // Select the accounts and click transfer
     const fromValue = await this.fromAccountSelect.locator('option:nth-child(2)').getAttribute('value');
     const toValue = await this.fromAccountSelect.locator('option:nth-child(1)').getAttribute('value');
-    
-    // Select the accounts
-    // await this.fromAccountSelect.selectOption(fromValue);
-    await this.toAccountSelect.selectOption(toValue);
-    
+    await this.fromAccountSelect.selectOption(fromValue);
     await this.transferButton.click();
     await this.page.waitForLoadState('networkidle');
     

@@ -20,7 +20,7 @@ async function globalSetup() {
     await page.getByRole('link', { name: 'Register' }).click();
     
     const userData = {
-      username: faker.internet.userName(),
+      username: faker.internet.username(),
       password: faker.internet.password(),
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),

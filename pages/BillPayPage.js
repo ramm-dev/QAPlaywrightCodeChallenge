@@ -28,10 +28,10 @@ class BillPayPage extends BasePage {
   async fillPayeeInformation(payeeName) {
     // Fill in payee details with faker data
     await this.payeeNameInput.fill(payeeName);
-    await this.addressInput.fill(faker.location.streetAddress());
-    await this.cityInput.fill(faker.location.city());
-    await this.stateInput.fill(faker.location.state());
-    await this.zipCodeInput.fill(faker.location.zipCode('#####'));
+    await this.addressInput.type(faker.location.streetAddress(), { delay: 100 });
+    await this.cityInput.type(faker.location.city(), { delay: 100 });
+    await this.stateInput.type(faker.location.state(), { delay: 100 });
+    await this.zipCodeInput.type(faker.location.zipCode('#####'), { delay: 100 });
     await this.phoneInput.fill(faker.phone.number('###-###-####'));
     
     // Generate and fill account number
@@ -39,12 +39,11 @@ class BillPayPage extends BasePage {
     await this.accountInput.fill(accountNumber);
     await this.verifyAccountInput.fill(accountNumber);
     
-    return payeeName; // Return payeeName for verification
+    return payeeName;
   }
 
   async fillPaymentDetails(amount) {
     await this.amountInput.fill(amount.toString());
-    // Select first account from dropdown
     const fromAccountId = await this.fromAccountSelect.locator('option:nth-child(1)').getAttribute('value');
     await this.fromAccountSelect.selectOption(fromAccountId);
   }

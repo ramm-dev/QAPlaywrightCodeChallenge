@@ -1,4 +1,5 @@
 const { expect } = require('@playwright/test');
+const config = require('../utils/config-loader');
 
 class BasePage {
   constructor(page) {
@@ -7,10 +8,15 @@ class BasePage {
     this.passwordInput = page.locator('input[name="password"]');
     this.loginButton = page.getByRole('button', { name: 'Log In' });
     this.logoutLink = page.getByRole('link', { name: 'Log Out' });
+    this.baseUrl = config.baseUrl || 'https://parabank.parasoft.com';
   }
 
   async navigateTo(url) {
     await this.page.goto(url);
+  }
+
+  async navigateToBase() {
+    await this.page.goto(this.baseUrl);
   }
 
   async login(username, password) {

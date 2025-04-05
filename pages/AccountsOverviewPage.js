@@ -1,6 +1,6 @@
 const BasePage = require('./BasePage');
 const { expect } = require('@playwright/test');
-const { captureAccountData } = require('../utils/parabank-utils');
+const { captureAccountData } = require('../utils/accountServicesUtil');
 
 class AccountsOverviewPage extends BasePage {
   constructor(page) {
